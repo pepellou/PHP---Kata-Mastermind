@@ -20,7 +20,9 @@ class CodeBreaker {
 	public function score(
 		$theScore
 	) {
-		$this->solved = true;
+		if ($theScore == "++++") {
+			$this->solved = true;
+		}
 	}
 
 }
