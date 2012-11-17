@@ -37,4 +37,17 @@ class CodeBreakerTest extends PHPUnit_Framework_TestCase {
 		);
 	}
 
+	public function test_ifScoreIsntPerfectNewGuessIsDifferentFromAllPreviousOnes(
+	) {
+		$firstGuess = $this->aCodeBreaker->guess();
+		$this->aCodeBreaker->score('+');
+		$secondGuess = $this->aCodeBreaker->guess();
+		$this->aCodeBreaker->score('+');
+		$thirdGuess = $this->aCodeBreaker->guess();
+
+		$this->assertNotEquals($firstGuess, $secondGuess);
+		$this->assertNotEquals($firstGuess, $thirdGuess);
+		$this->assertNotEquals($secondGuess, $thirdGuess);
+	}
+
 }
