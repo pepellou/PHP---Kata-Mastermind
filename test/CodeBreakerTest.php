@@ -28,12 +28,32 @@ class CodeBreakerTest extends PHPUnit_Framework_TestCase {
 		);
 	}
 
+	/**
+	* @dataProvider not_perfect_guesses
+	*/
 	public function test_ifScoreIsntPerfectBreakerDoesntYay(
+		$aNotPerfectGuess
 	) {
-		$this->aCodeBreaker->score('+');
+		$this->aCodeBreaker->score($aNotPerfectGuess);
 		$this->assertNotEquals(
 			"Yay! I win!",
 			$this->aCodeBreaker->guess()
+		);
+	}
+
+	public static function not_perfect_guesses(
+	) {
+		return array(
+			array('-'),
+			array('+'),
+			array('++'),
+			array('+++'),
+			array('---+'),
+			array('--+'),
+			array('-+'),
+			array('-++-'),
+			array('-++'),
+			array('-+++'),
 		);
 	}
 
