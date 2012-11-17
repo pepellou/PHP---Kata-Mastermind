@@ -70,4 +70,30 @@ class CodeBreakerTest extends PHPUnit_Framework_TestCase {
 		$this->assertNotEquals($secondGuess, $thirdGuess);
 	}
 
+	public function test_guessesAreValid(
+	) {
+		for ($i = 0; $i < 10; $i++) {
+			$this->assertValidGuess(
+				$this->aCodeBreaker->guess()
+			);
+		}
+	}
+
+	private function assertValidGuess(
+		$guess
+	) {
+		$this->assertEquals(4, strlen($guess));
+		$this->assertValidChar($guess[0]);
+		$this->assertValidChar($guess[1]);
+		$this->assertValidChar($guess[2]);
+		$this->assertValidChar($guess[3]);
+	}
+
+	private function assertValidChar(
+		$char
+	) {
+		$this->assertTrue($char >= 'A');
+		$this->assertTrue($char <= 'F');
+	}
+
 }
