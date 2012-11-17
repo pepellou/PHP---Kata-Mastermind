@@ -19,4 +19,13 @@ class CodeBreakerTest extends PHPUnit_Framework_TestCase {
 		);
 	}
 
+	public function test_ifScoreIsPerfectBreakerYays(
+	) {
+		$this->aCodeBreaker->score('++++');
+		$this->assertEquals(
+			"Yay! I win!",
+			$this->aCodeBreaker->guess()
+		);
+	}
+
 }
